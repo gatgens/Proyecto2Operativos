@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/Proyecto2Operativos.dir/main.c.o  -o Proyecto2Operativos 

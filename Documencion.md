@@ -27,27 +27,27 @@ El proyecto esta compuesto por las siguientes partes:
 
 ## Ambiente de Desarrollo
 
-CLion: Mediante estos editores se realizó el código de todo el proyecto y el debbugeo necesario.
+- CLion: Mediante estos editores se realizó el código de todo el proyecto y el debbugeo necesario.
 
-GCC: mediante esta herramienta compilamos el código de proyecto.
+- GCC: mediante esta herramienta compilamos el código de proyecto.
 
-Ubuntu Linux: Sistema operativo en el que se desarrolló todo el proyecto.
+- Ubuntu Linux: Sistema operativo en el que se desarrolló todo el proyecto.
 
-Github: Utilizamos este servicio como alojamiento de nuestro repositorio del proyecto.
+- Github: Utilizamos este servicio como alojamiento de nuestro repositorio del proyecto.
 
 
 ## Estructuras de datos usadas y funciones
 
-#### Inodes
-#### Pila de datos
-#### Listas
+- Inodes
+-  Pila de datos
+- Listas
 
 ### Librerías utilizadas 
 
-#### PNG-dev
-#### libqrencode-dev
-#### String.h
-#### fuse.h
+- PNG-dev
+- libqrencode-dev
+- String.h
+- fuse.h
 
 
 ### Funciones QRFS

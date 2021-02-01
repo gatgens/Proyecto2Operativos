@@ -33,6 +33,6 @@ char* leerQR(char* filename);
 void crearSuperBloque(int cantRegistros);
 void guardarPila();
 void reestablecerPila(int cant);
-int* QRDeBuffer(char* buffer, int tam);
+void QRDeBuffer(const char* buffer, int tam);
 
 #endif //PROYECTO2_QR_ADMIN_H

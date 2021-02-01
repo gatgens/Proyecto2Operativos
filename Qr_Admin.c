@@ -13,6 +13,11 @@ int restablecido = 0;
 static int writePNG(QRcode *qrcode, const char *outfile);
 char* cambiarDireccion(char* token);
 
+/**
+ * Lee un QR a partir de el nombre de este
+ * @param filename
+ * @return
+ */
 char* leerQR(char* filename)
 {
     memset(resultado, 0, sizeof resultado);
@@ -36,7 +41,12 @@ char* leerQR(char* filename)
     return resultado;
 }
 
-int* QRDeBuffer(char* buffer, int tam)
+/**
+ * Funcion para escribir los bloques del fs en QRs
+ * @param buffer
+ * @param tam
+ */
+void QRDeBuffer(const char* buffer, int tam)
 {
     int qrIds[100];
     memset(qrIds, -1, sizeof qrIds);
@@ -59,10 +69,13 @@ int* QRDeBuffer(char* buffer, int tam)
         qrIds[actId] = atoi(qrName);
         actId++;
     }while (leido < tam);
-
-    return qrIds;
 }
 
+/**
+ * lee un archivo y genera QRs de 128 bytes para el archivo
+ * @param file
+ * @return
+ */
 int lectura(char* file)
 {
     FILE *archivo;
@@ -103,6 +116,12 @@ int lectura(char* file)
     return 0;
 }
 
+/**
+ * Funcion que crea un QR de 128 bytes
+ * @param filename
+ * @param msg
+ * @return
+ */
 int createQR(char* filename, const char* msg)
 {
     QRcode *myqrcode; //estructura del qr
@@ -113,7 +132,7 @@ int createQR(char* filename, const char* msg)
 }
 
 /*
- * funcion que traduce el bitmap a una imagen no se como funciona o bueno si se pero no es requisito para la progra por lo que no la documento*/
+ * funcion que traduce el bitmap a una imagen*/
 static int writePNG(QRcode *qrcode, const char *outfile) {
     static FILE *fp; // avoid clobbering by setjmp.
     png_structp png_ptr;
@@ -235,6 +254,10 @@ static int writePNG(QRcode *qrcode, const char *outfile) {
     return 0;
 }
 
+/**
+ * Funcion que inicializa la pila de bloques
+ * @param cantRegistros
+ */
 void crearSuperBloque(int cantRegistros)
 {
     //{creationTime: 1376483073, mounted: 50, devId:20, freeStart:1, freeEnd:25, root:26, maxBlocks:10000}
@@ -242,6 +265,9 @@ void crearSuperBloque(int cantRegistros)
     pila = crearPila(cantRegistros);
 }
 
+/**
+ * Funcion que guarda el estado de la pila en QRs
+ */
 void guardarPila()
 {
     char datosGuardar[128];
@@ -282,6 +308,10 @@ void guardarPila()
     free(pila);
 }
 
+/**
+ * Funcion que lee los QR para reestablecer la pila
+ * @param cant
+ */
 void reestablecerPila(int cant)
 {
     char datosLeidos[128*cant*2];
@@ -325,6 +355,11 @@ void reestablecerPila(int cant)
     //verificarPila(pila);
 }
 
+/**
+ * Funcion que reemplaza memoria con una nueva
+ * @param token
+ * @return
+ */
 char* cambiarDireccion(char* token)
 {
     char* tokenTemp = (char*) malloc(4 * sizeof(char));

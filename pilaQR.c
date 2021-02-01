@@ -1,8 +1,12 @@
 #include "pilaQR.h"
 #include <string.h>
-
 void rellenarPila(struct pilaQR* pila, int cantRegistros);
 
+/**
+ * Crea los QR con la informacion de la pila
+ * @param nombreQR
+ * @return
+ */
 struct nodoQR* crearNodoQR(char* nombreQR){
     struct nodoQR* nodoTemp = (struct nodoQR*) malloc(sizeof(struct nodoQR));
     nodoTemp->nombreQR = nombreQR;
@@ -10,6 +14,11 @@ struct nodoQR* crearNodoQR(char* nombreQR){
     return nodoTemp;
 }
 
+/**
+ * FUncion que crea la pila reservando la memoria
+ * @param cantRegistros
+ * @return
+ */
 struct pilaQR* crearPila(int cantRegistros){
     struct pilaQR* pilaTempQR = (struct pilaQR*) malloc(sizeof(struct pilaQR));
     pilaTempQR->cabeza = pilaTempQR->actual = NULL;
@@ -18,6 +27,11 @@ struct pilaQR* crearPila(int cantRegistros){
     return pilaTempQR;
 }
 
+/**
+ * Funcion que vuelve a llenar la pila con los QR
+ * @param pila
+ * @param cantRegistros
+ */
 void rellenarPila(struct pilaQR* pila, int cantRegistros)
 {
     for (int i = 0; i < cantRegistros; ++i)
@@ -36,6 +50,11 @@ void rellenarPila(struct pilaQR* pila, int cantRegistros)
     }
 }
 
+/**
+ * Funcion para meter en la pila
+ * @param pila
+ * @param nombreQR
+ */
 void pushQR(struct pilaQR* pila, char* nombreQR){
     struct nodoQR* nodoTemp = crearNodoQR(nombreQR);
 
@@ -49,6 +68,12 @@ void pushQR(struct pilaQR* pila, char* nombreQR){
     pila->cabeza = nodoTemp;
     tamanioPila = tamanioPila + 1;
 }
+
+/**
+ * Funcion para sacar de la pila
+ * @param pila
+ * @return
+ */
 char* popQR(struct pilaQR* pila){
     if(pila->cabeza == NULL){
         return 0;
@@ -62,11 +87,21 @@ char* popQR(struct pilaQR* pila){
     return  qrLibre;
 }
 
+/**
+ * Obtiene el tamaño de la pila
+ * @return
+ */
 int getTam()
 {
     return tamanioPila;
 }
 
+/**
+ * Vuelve a crear la pila desde QR
+ * @param pila
+ * @param qr
+ * @return
+ */
 struct pilaQR* restaurarPila(struct pilaQR* pila, char* qr)
 {
     struct nodoQR* temp = crearNodoQR(qr);
@@ -84,6 +119,10 @@ struct pilaQR* restaurarPila(struct pilaQR* pila, char* qr)
     }
 }
 
+/**
+ * Funcion que verifica que la pila no este vacia
+ * @param pila
+ */
 void verificarPila(struct pilaQR* pila)
 {
     struct nodoQR* actual = pila->cabeza;

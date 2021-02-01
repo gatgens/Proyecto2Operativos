@@ -15,10 +15,8 @@
 
 ## Introdución
 
-En este proyecto se realizará la reimplementación de varias funciones del file system, las
-cuales son el montaje de archivos. Los archivos que se manejaran seran archivos QR, los
-cuales seran montados en el sistema operativo para su almacenamiento y manejo de los
-mismos.
+En este proyecto se realizará la reimplementación de varias funciones del file system. Los archivos que se manejaran seran archivos QR, los
+cuales seran montados en el sistema operativo para su almacenamiento y manejo de los mismos.
 El proyecto esta compuesto por las siguientes partes:
 - QRFS: Son las funciones que se va a reimplementar y las cuales se encargan del manejo de los archivos.
 - mkfs.qrfs: Es el medio por el cual se crea el sistema de archivos y define con cual es el primer archivo de la particion.
@@ -40,194 +38,179 @@ Github: Utilizamos este servicio como alojamiento de nuestro repositorio del pro
 
 ## Estructuras de datos usadas y funciones
 
-#### Listas circulares
+#### Inodes
+#### Pila de datos
+#### Listas
 
 ### Librerías utilizadas 
 
-#### Ncurses.h
-### UContext.h
-### String.h
+#### PNG-dev
+#### libqrencode-dev
+#### String.h
+#### fuse.h
 
 
-### Biblioteca mypthreads
+### Funciones QRFS
 
+#### Funciones a reimplementar (my_create, my_open, my_read, etc )
 
-#### my_thread_init
+Funciones básicas de los file systemas solicitadas en el proyecto.
 
-Esta función se encarga de iniciar un hilo que va a controlar todos los demás y además inicia toda la biblioteca.
+#### buscar_archivo()
 
-#### my_thread_create
+Función que busca el inodo mediante el path.
 
-esta función se encarga de crear un hilo mas no realiza su ejecución, solamente le asigna su espacio y setea sus parámetros y contextos para su futura ejecución.
+#### find_i_father()
 
-#### my_thread_yield
-Con esta función se logra pausar la ejecución de un hilo.
+Función que busca el inodo padre del inodo actual mediante el path.
 
+### Qr_admin
 
-#### my_thread_exit
-Esta función se encarga de terminar la ejecución de un hilo sin embargo este sigue activo.
+#### leerQR()
 
-#### my_thread_chsched
-Función que se encarga de cambiar el scheduler de un hilo durante su ejecución.
+Función que lee los datos de un qr.
 
-#### my_thread_sleep
-Esta función se encarga de dormir la ejecución de un hilo por una cantidad de tiempo.
+#### QRdeBuffer()
 
-#### my_thread_cancel
+Genera cuantos qr's sean necesarios de acuerdo al tamaño de la entrada
 
-Esta función se encarga de cancelar la ejecución de un hilo y dejarlo inutilizable.
+#### createQR()
 
-#### my_thread_join
+Crea un qr con el nombre y datos específicados. 
 
-Esta función es la encargada de agregar hilos a la cola de ejecución de hilos y esperar a que termine la ejecución de los demás hilos.
+#### guardarPila()
 
-#### my_thread_detach
-Esta función hace que el hilo no retorna ningún valor al finalizar su ejecución. 
+Función que guarda la pila en disco usando qr.
 
-#### my_mutex_init
-Esta función se encarga de inicializar las estructuras para el mutex.
+#### restablecerPila()
 
-#### my_mutex_lock
+Función que carga la pila desde unos qr en disco.
 
-Esta función se encarga de bloquear la memoria compartida mediante un mutex.
-
-#### my_mutex_unlock
-
-Esta función se encarga de desbloquear la memoria compartida del mutex para el uso de los demás hilos.
-
-#### realTime
-
-Función que se encarga de llevar a cabo el scheduler de Real Time
-
-#### SorteScheduler 
-
-Esta es la función principal que ejecula el scheduler de sorteo.
-
-#### RoundRobinScheduler
-
-Función que ejecuta el scheduler round robin en los hilos.
-
-### Biblioteca Animación
-
-#### AnimarFigura e imprimirFigura
-
-Funciones que llevan a cabo el animar y mostrar la objeto en el canvas.
-
-#### MoverFigura
-
-Función que mueve la animación en el canvas.
-
-#### PrepararFigura
-
-Función que carga la figura seleccionada en memoria con los parametros elegidos para esta.
+#### 
 
 ## Instrucciones para ejecutar el programa
 
-#### Para probar los hilos
+## Para usar QRFS
 
-gcc  -Wall pruebaHilos.c Schedulers.c mypthreads.c DataStructures.c -o prueba
+gcc -Wall Qr_Admin.c pilaQR.c QRFS.c -lm -lpng -lqrencode pkg-config fuse --cflags --libs -o fs
 
-./prueba
+./fs -f [punto de montaje]
 
-#### Para probar la animación
-
-gcc -Wall Animacion.c Lenguaje.c -o Animacion -lncurses
-
-./Animacion
+Además, como paso extra hay que usar otra terminal para ingresar y utilizar el file system montado.
 
 ## Actividades realizadas por estudiante
 
-#### Carlos Mora M
+#### Jonathan Guillen
 
 |                                  Actividad                                      |    Fecha   | Tiempo     |
 |:-------------------------------------------------------------------------------:|:----------:|------------|
-| Se inicio la investigación sobre el trabajo a realizar                          | 08/11/2020 | 5 horas    |
-| Se realizo lectura sobre manejo de hilos en C                                   | 13/11/2020 | 5 horas    |
-| Se realizo lectura e investigación sobre la implementación de hilos en C        | 18/11/2020 | 6 horas    |
-| Se realizaron pruebas de manejo de funcionalidad de u_context en C              | 25/11/2020 | 5 horas    |
-| Se realizo el primer intento de implementación de hilos en C                    | 26/11/2020 | 4 horas    |
-| Se hizo la primer implementación de manejo de hilos en C medainamente funcional | 27/11/2020 | 3 horas    |
-| Se realizó más investigación sobre la implementación de hilos en C              | 30/11/2020 | 3 horas    |
-| Se creo el primer prototipo de hilos                                            | 03/12/2020 | 5 horas    |
-| Se creo un versión más pulida de los hilos                                      | 04/12/2020 | 3 horas    |
-| Se investigo sobre el mutex y animaciones                                       | 04/12/2020 | 3 horas    |
-| Se implemento el mutex                                                          | 05/12/2020 | 3 horas    |
-| Se realizaron las pruebas de funcionamiento                                     | 06/12/2020 | 2 horas    |
-| Se realizo la documentación escrita de la tarea                                 | 06/12/2020 | 3 horas    |
+| Estudiar sobre file systems.                                                    | 18/01/2021 | 3 horas    |
+| Buscar información sobre inodes.                                                | 19/01/2021 | 2 horas    |
+| Creación prototipo de los inodes.                                               | 23/01/2021 | 4 horas    |
+| Creación de pila para el manejo de la fragmentación.                            | 24/01/2021 | 6 horas    |
+| Escribir la Documentación.                                                      | 31/01/2021 | 1 hora     |
 
-Horas Totales: 50 horas.
+Horas Totales: 16 horas.
 
 
 #### Kevin Segura
 
 |                                  Actividad                                      |    Fecha   | Tiempo     |
 |:-------------------------------------------------------------------------------:|:----------:|------------|
-| Se inicio la investigación sobre el trabajo a realizar                          | 08/11/2020 | 4 horas    |
-| Se realizo lectura sobre manejo de Scheduers en C                               | 12/11/2020 | 4 horas    |
-| Se realizo lectura e investigación sobre la implementación de schedulers en C   | 15/11/2020 | 4 horas    |
-| Se realizaron pruebas de manejo de funcionalidad de u_context en C              | 20/11/2020 | 5 horas    |
-| Se realizo el primer intento de implementación de scheduler en C                | 25/11/2020 | 4 horas    |
-| Se hizo la primer implementación de manejo de hilos en C medianamente funcional | 26/11/2020 | 2 horas    |
-| Se realizó más investigación sobre la implementación de hilos en para la        |                         | 
-solución de errores encontrados                                                   | 28/11/2020 | 3 horas    |
-| Se creo el primer prototipo de hilos                                            | 29/12/2020 | 5 horas    |
-| Se creo un versión más pulida de los hilos                                      | 30/12/2020 | 1 horas    |
-| Se investigo sobre el mutex                                                     | 01/12/2020 | 3 horas    |
-| Se implemento el mutex                                                          | 01/12/2020 | 3 horas    |
-| Se realizaron las pruebas de funcionamiento                                     | 01/12/2020 | 2 horas    |
-| Se comenzo con el diseño de la animación y buscar arte ASCII                    | 02/12/2020 | 3 Horas    |
-| Se realizaron funciones como la de cargar archivos y una animación básica.      | 03/12/2020 | 4 Horas    |
-| Se comenzo a programas la funcionalidad de multiples Displays.                  | 04/12/2020 | 3 Horas    |
-| Se detuvo el anterior trabajo para la investigación de errores encontrados.     | 05/12/2020 | 4 Horas    |
-| Se continuo investigando sobre los errores.                                     | 06/12/2020 | 5 Horas    |
-| Se realizo la documentación escrita de la tarea                                 | 06/12/2020 | 1 hora     |
+| Estudio sobre sistemas de archivos.                                             | 17/01/2021 | 3 horas    |
+| Estudio sobre la libreria fuse                                                  | 18/01/2021 | 4:30 horas |
+| Busqueda de como crear y leer codigos qr.                                       | 19/01/2021 | 5 horas    |
+| Se siguio con el estudio de los qr.                                             | 21/01/2021 | 4 horas    |
+| Más estudio de qr.                                                              | 22/01/2021 | 4 horas    |
+| Reestruturación de algunos detalles de la pila.                                 | 25/01/2021 | 5 horas    |
+| Creación de las funciones necesarias para el manejo de qr.                      | 26/01/2021 | 4 horas    |
+| Intento de implementación de Inodes con qr.                                     | 26/01/2021 | 5 horas    |
+| Se agrego funcionalidad de la pila para que funcionara de qr.                   | 27/01/2021 | 3 horas    |
+| Más funciones necesarias para el uso de qr en el file system.                   | 28/01/2021 | 4 horas    |
+| Más intentos de pegar el file system con las funciones de qr.                   | 28/01/2021 | 5 horas    |
+| Creación de la documentación.                                                   | 31/12/2021 | 1 hora     |
 
-Horas Totales: 60 horas.
+Horas Totales: 42:30 horas.
 
 
 #### Jorge Gatgens
 
 |                                  Actividad                                      |    Fecha   | Tiempo     |
 |:-------------------------------------------------------------------------------:|:----------:|------------|
-| Se inicio la investigación sobre el trabajo a realizar                          | 08/11/2020 | 5 Horas    |
-| Se investigo y diseño las animaciones                                           | 03/12/2020 | 6 Horas    |
-| Implementación de canvas                                                        | 04/12/2020 | 3 Horas    |
-| Implementación del menú de las animaciones junto con sus restricciones          | 04/12/2020 | 3 Horas    |
-| Investigaciones sobre errores encontrados (Malloc principalmente)               | 05/12/2020 | 5 Horas    |
-| Se realizaron las pruebas de funcionamiento                                     | 06/12/2020 | 2 Horas    |
-| Se siguió investigando posibles soluciones para los errores                     | 06/12/2020 | 4 Horas    |
-| Se realizo la documentación escrita de la tarea                                 | 06/12/2020 | 3 Horas    |
+| Estudio sobre sistemas de archivos.                                             | 15/01/2021 | 3 Horas    |
+| Estudio sobre los qr.                                                           | 17/01/2021 | 3 horas    |
+| Investigación sobre las funciones que hay que reimplementar.                    | 18/01/2021 | 5 Horas    |
+| Estudio de la librería fuse.                                                    | 20/01/2021 | 2 Horas    |
+| Se continuo el estudio de la librería fuse.                                     | 21/01/2021 | 3 Horas    |
+| Implementación de las funciones en memoria.                                     | 22/01/2021 | 4 Horas    |
+| Se siguio con la implementación del file sistem en memoria.                     | 24/01/2021 | 3 Horas    |
+| Preparando el file sistem para implementar el guardado por qr.                  | 25/01/2021 | 4 Horas    |
+| Intentos de pegar el file system con las funciones de qr.                       | 27/01/2021 | 5 Horas    |
+| Más intentos de pegar el file system con las funciones de qr.                   | 28/01/2021 | 6 horas    |
+| Creación de la documentación                                                    | 31/01/2021 | 1 horas    |
 
-Horas Totales: 31 horas.
+Horas Totales: 40 horas.
 
 ## Evaluación
 
+mkfs.qrfs: 10 % de 14 %
+fsck.qrfs: 0 % de 5 %
+mount.qrfs: 0 % de 15 % 
+Funciones de la biblioteca: 22 % de 26%.
+Documentación: 15 % de 15 %
+Implementación del FS: 14 % de 30 %.
+Diseño del FS: 10 % de 10 %
+Manejo de Fragmentación: 10 % de 15 %
+
 ## Autoevaluación
 
-#### Carlos Mora
+#### Jonatha Guillen
+
+[1] [2] [3] [3] [5] Aprendizaje de mkfs. [2]
+[1] [2] [3] [3] [5] Aprendizaje de fsck. [3]
+[1] [2] [3] [3] [5] Aprendizaje de mount. [2]
+[1] [2] [3] [3] [5] Aprendizaje de implementacion de funciones. [3]
+[1] [2] [3] [3] [5] Aprendizaje de Diseño de Filesystem. [3]
+
 
 #### Kevin Segura 
 
+[1] [2] [3] [3] [5] Aprendizaje de mkfs. [3]
+[1] [2] [3] [3] [5] Aprendizaje de fsck. [4]
+[1] [2] [3] [3] [5] Aprendizaje de mount. [3]
+[1] [2] [3] [3] [5] Aprendizaje de implementacion de funciones. [5]
+[1] [2] [3] [3] [5] Aprendizaje de Diseño de Filesystem. [5]
 
 #### Jorge Gatgens
+
+[1] [2] [3] [3] [5] Aprendizaje de mkfs. [3]
+[1] [2] [3] [3] [5] Aprendizaje de fsck. [4]
+[1] [2] [3] [3] [5] Aprendizaje de mount. [3]
+[1] [2] [3] [3] [5] Aprendizaje de implementacion de funciones. [5]
+[1] [2] [3] [3] [5] Aprendizaje de Diseño de Filesystem. [5]
 
 
 ## Estado Final del proyecto
 
+Incompleto, se logro implementar casi que a su totalidad el file system, pero en memoria sin usar los qr's. También se logro la lectura y escriura de lectura de qr, junto con otras funciones necesarias para la integración de los qr al file system y una pila que manejara la fragmentación de estos, aunque es aquí donde se llego a los problemas y no se pudo terminar con la implementación.  
+
 ## Problemas encontrados y limitaciones
 
-## Reporte de Commits
-
+Primero, el siempre tan sonado problema con el manejo de la memoria en C, que aunque esta vez no fue tan grave por el uso de un debugger en condición, si represento en ocasiones perdida de tiempo valioso. Fuera de ahí, sí se comprendió en su totalidad como funcionaban las partes del file system y como implementarlos, pero planeación de tiempo sin considerar factores externos que nos pudieran afectar el tiempo efectivo para dedicarle al proyecto nos jugo uno mala pasada.
 
 ## Lecciones Aprendidas
+
+- Se aprendió a profundidad como funciona un file system desde el lado del programado.
+- Manejo de qr en C.
+- Un conocimiento mayor de Inodes.
+- Importancia del superbloque y atributos de los archivos.
+- Funcionamiento y utilidad de Fuse en general.
 
 
 ## Bibliografía
 
-Droid, L. I. (2015). Machinary. Obtenido de Machinary:
-https://machiry.wordpress.com/2012/01/02/mfiber-simple-user-land-threadlibrary/
-McGraw-Hill, E. (2008). MailxMail. Obtenido de MailxMail:
-http://www.mailxmail.com/curso-informatica-procesos/procesos-c-funcion-sigprocmask
-Perepelitsa, C. (2013). Quora. Obtenido de Quora: https://www.quora.com/Howdo-you-write-a-C-program-to-split-a-string-by-a-delimiter
-Pina, C.(2004). MANUAL DE INICIACIÓN A LA LIBRERÍA NCURSES. Recuperado de: http://index-of.co.uk/Programming/ncurses.pdf
-ASCII Art Archive.(s.f). Recuperado de: https://www.asciiart.eu/
+- Hussain, M. (2019). Writing Less Simple, Yet Stupid Filesystem Using FUSE in C. Recuperado de: https://www.maastaar.net/fuse/linux/filesystem/c/2019/09/28/writing-less-simple-yet-stupid-filesystem-using-FUSE-in-C/
+- Amay. (2015). Fuse_File_persistent_CS6233_NYU. Recuperado de: https://github.com/Amay22/Fuse_File_persistent_CS6233_NYU/blob/master/amayFuse.c
+- Comunidad. (2020). LibFuse. Recuperado de: https://github.com/libfuse/libfuse
+- Fukushi, K. (2020). libqrencode. Recuperado de: https://fukuchi.org/works/qrencode/
+

@@ -167,26 +167,38 @@ Horas Totales: 40 horas.
 #### Jonatha Guillen
 
 [1] [2] [3] [3] [5] Aprendizaje de mkfs. [2]
+
 [1] [2] [3] [3] [5] Aprendizaje de fsck. [3]
+
 [1] [2] [3] [3] [5] Aprendizaje de mount. [2]
+
 [1] [2] [3] [3] [5] Aprendizaje de implementacion de funciones. [3]
+
 [1] [2] [3] [3] [5] Aprendizaje de Diseño de Filesystem. [3]
 
 
 #### Kevin Segura 
 
 [1] [2] [3] [3] [5] Aprendizaje de mkfs. [3]
+
 [1] [2] [3] [3] [5] Aprendizaje de fsck. [4]
+
 [1] [2] [3] [3] [5] Aprendizaje de mount. [3]
+
 [1] [2] [3] [3] [5] Aprendizaje de implementacion de funciones. [5]
+
 [1] [2] [3] [3] [5] Aprendizaje de Diseño de Filesystem. [5]
 
 #### Jorge Gatgens
 
 [1] [2] [3] [3] [5] Aprendizaje de mkfs. [3]
+
 [1] [2] [3] [3] [5] Aprendizaje de fsck. [4]
+
 [1] [2] [3] [3] [5] Aprendizaje de mount. [3]
+
 [1] [2] [3] [3] [5] Aprendizaje de implementacion de funciones. [5]
+
 [1] [2] [3] [3] [5] Aprendizaje de Diseño de Filesystem. [5]
 
 

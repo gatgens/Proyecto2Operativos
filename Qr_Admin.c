@@ -36,6 +36,33 @@ char* leerQR(char* filename)
     return resultado;
 }
 
+int* QRDeBuffer(char* buffer, int tam)
+{
+    int qrIds[100];
+    memset(qrIds, -1, sizeof qrIds);
+    int leido = 0;
+    int i = 0;
+    int actId = 0;
+
+    do {
+        char datos[128];
+        while (leido < tam && i < 127)
+        {
+            datos[i] = buffer[leido];
+            leido++;
+            i++;
+        }
+        i = 0;
+        char* qrName = popQR(pila);
+        createQR(qrName, datos);
+        memset(datos, 0 , sizeof datos);
+        qrIds[actId] = atoi(qrName);
+        actId++;
+    }while (leido < tam);
+
+    return qrIds;
+}
+
 int lectura(char* file)
 {
     FILE *archivo;

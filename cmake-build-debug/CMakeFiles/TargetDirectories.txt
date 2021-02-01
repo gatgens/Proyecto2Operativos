@@ -1,3 +1,0 @@
-/home/jgatgens/Documentos/TEC/Operativos/Proyecto2Operativos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/jgatgens/Documentos/TEC/Operativos/Proyecto2Operativos/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/jgatgens/Documentos/TEC/Operativos/Proyecto2Operativos/cmake-build-debug/CMakeFiles/Proyecto2Operativos.dir

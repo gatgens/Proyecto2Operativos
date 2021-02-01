@@ -153,14 +153,14 @@ Horas Totales: 40 horas.
 
 ## Evaluación
 
-mkfs.qrfs: 10 % de 14 %
-fsck.qrfs: 0 % de 5 %
-mount.qrfs: 0 % de 15 % 
-Funciones de la biblioteca: 22 % de 26%.
-Documentación: 15 % de 15 %
-Implementación del FS: 14 % de 30 %.
-Diseño del FS: 10 % de 10 %
-Manejo de Fragmentación: 10 % de 15 %
+- mkfs.qrfs: 10 % de 14 %
+- fsck.qrfs: 0 % de 5 %
+- mount.qrfs: 0 % de 15 % 
+- Funciones de la biblioteca: 22 % de 26%.
+- Documentación: 15 % de 15 %
+- Implementación del FS: 14 % de 30 %.
+- Diseño del FS: 10 % de 10 %
+- Manejo de Fragmentación: 10 % de 15 %
 
 ## Autoevaluación
 

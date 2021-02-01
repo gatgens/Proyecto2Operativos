@@ -2,11 +2,11 @@
 ## Escuela de Ingeniería en Computación
 ### Principios de sistemas operativos
 
-# RememberRemember
+# QRFS
 
 ### Desarrollado por
 * #### Kevin Segura Rojas (2017153767)
-* #### Carlos Mora Murillo (2017238926)
+* #### Jonathan Guillén (201261579)
 * #### Jorge Gatgens Villalobos (2017110109)
 
 ##### Alajuela, II-S 2020
